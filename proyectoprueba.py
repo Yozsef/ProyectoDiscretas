@@ -46,7 +46,7 @@ def main():
     # Ingreso de los conjuntos
     conjunto1 = set(map(int, input("Ingrese los elementos del primer conjunto separados por espacios: ").split()))
     conjunto2 = set(map(int, input("Ingrese los elementos del segundo conjunto separados por espacios: ").split()))
-    
+    #adsad
     while True:
         # Menú de opciones
         print("\nMenú de opciones:")
