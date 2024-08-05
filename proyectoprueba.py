@@ -9,6 +9,16 @@ def diferencia(conjunto1, conjunto2):
 def union(conjunto1, conjunto2):
     return list(set(conjunto1) | set(conjunto2))
 
+def convert_to_type(s):
+    try:
+        return int(s)
+    except ValueError:
+        try:
+            return float(s)
+        except ValueError:
+            return s
+        
+
 
 #Funciones Interseccion
 def obtener_interseccion(conjunto1, conjunto2):
@@ -44,8 +54,8 @@ def main():
     print("Bienvenido al proyecto de Estructuras Discretas")
     
     # Ingreso de los conjuntos
-    conjunto1 = set(map(int, input("Ingrese los elementos del primer conjunto separados por espacios: ").split()))
-    conjunto2 = set(map(int, input("Ingrese los elementos del segundo conjunto separados por espacios: ").split()))
+    conjunto1 = set(map(convert_to_type, input("Ingrese los elementos del primer conjunto separados por espacios: ").split()))
+    conjunto2 = set(map(convert_to_type, input("Ingrese los elementos del segundo conjunto separados por espacios: ").split()))
     #adsad
     while True:
         # Menú de opciones
