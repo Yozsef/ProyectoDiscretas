@@ -1,11 +1,14 @@
 import itertools
 
-#Funcion diferencia
+# Función diferencia
 def diferencia(conjunto1, conjunto2):
     return list(set(conjunto1) - set(conjunto2))
 
+# Función diferencia simétrica
+def diferencia_simetrica(conjunto1, conjunto2):
+    return list(set(conjunto1).symmetric_difference(set(conjunto2)))
 
-#Funcion Union
+# Función unión
 def union(conjunto1, conjunto2):
     return list(set(conjunto1) | set(conjunto2))
 
@@ -17,12 +20,10 @@ def convert_to_type(s):
             return float(s)
         except ValueError:
             return s
-        
 
-
-#Funciones Interseccion
+# Función intersección
 def obtener_interseccion(conjunto1, conjunto2):
-    # Calculamos y devolvemos la interseccion de dos conjuntos
+    # Calculamos y devolvemos la intersección de dos conjuntos
     return conjunto1 & conjunto2
 
 def mostrar_resultados(conjunto1, conjunto2, interseccion):
@@ -31,11 +32,9 @@ def mostrar_resultados(conjunto1, conjunto2, interseccion):
     print("El segundo conjunto es:", conjunto2)
     print("\nLa intersección de los dos conjuntos es:", interseccion)
 
-#Funciones Conjunto potencia
-
+# Función conjunto potencia
 def conjunto_potencia(conjunto):
-    #Calcula el conjunto potencia de un solo conjunto.
-    
+    # Calcula el conjunto potencia de un solo conjunto.
     potencia = []
     for r in range(len(conjunto) + 1):
         for subset in itertools.combinations(conjunto, r):
@@ -43,20 +42,20 @@ def conjunto_potencia(conjunto):
     return potencia
 
 def conjunto_potencia_multiple(*conjuntos):
-    #Calcula el conjunto potencia de cada conjunto dado.
+    # Calcula el conjunto potencia de cada conjunto dado.
     resultados = []
     for conjunto in conjuntos:
         resultados.append(conjunto_potencia(conjunto))
     return resultados
 
-#PANTALLA PRINCIPAL
+# PANTALLA PRINCIPAL
 def main():
     print("Bienvenido al proyecto de Estructuras Discretas")
     
     # Ingreso de los conjuntos
     conjunto1 = set(map(convert_to_type, input("Ingrese los elementos del primer conjunto separados por espacios: ").split()))
     conjunto2 = set(map(convert_to_type, input("Ingrese los elementos del segundo conjunto separados por espacios: ").split()))
-    #adsad
+    
     while True:
         # Menú de opciones
         print("\nMenú de opciones:")
@@ -64,10 +63,11 @@ def main():
         print("2. Intersección")
         print("3. Unión")
         print("4. Diferencia")
-        print("5. Salir")
+        print("5. Diferencia Simétrica")
+        print("6. Salir")
         
         # Elección del usuario
-        opcion = input("Seleccione una opción (1-5): ")
+        opcion = input("Seleccione una opción (1-6): ")
         
         if opcion == '1':
             print("Opción seleccionada: Conjunto potencia")
@@ -93,13 +93,19 @@ def main():
             resultado = diferencia(conjunto1, conjunto2)
             print("\nLa diferencia del primer conjunto menos el segundo conjunto es:")
             print(resultado)
-            
+        
         elif opcion == '5':
+            print("Opción seleccionada: Diferencia Simétrica")
+            resultado = diferencia_simetrica(conjunto1, conjunto2)
+            print("\nLa diferencia simétrica entre los conjuntos es:")
+            print(resultado)
+        
+        elif opcion == '6':
             print("Saliendo del programa...")
             break  # Salir del bucle
         
         else:
-            print("Opción no válida. Por favor, elija una opción del 1 al 5.")
+            print("Opción no válida. Por favor, elija una opción del 1 al 6.")
 
 if __name__ == "__main__":
     main()
